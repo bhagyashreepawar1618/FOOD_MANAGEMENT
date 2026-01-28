@@ -13,6 +13,19 @@ function Header() {
 
         <nav className="flex gap-6 text-gray-800 font-medium">
           <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `transition ${
+                isActive
+                  ? "text-[#AB274F] border-b-2 border-[#AB274F]"
+                  : "hover:text-[#AB274F]"
+              }`
+            }
+          >
+            Home
+          </NavLink>
+
+          <NavLink
             to="/register"
             className={({ isActive }) =>
               `transition ${

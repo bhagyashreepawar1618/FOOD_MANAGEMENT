@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import bgImage from "../../assets/bgimage.jpg";
 
 function Home() {
   return (
@@ -27,7 +28,7 @@ function Home() {
         {/* Right Image Placeholder */}
         <div className="flex justify-center">
           <div className="w-full h-64 md:h-80 bg-white border-2 border-dashed border-[#AB274F] rounded-xl flex items-center justify-center text-gray-400">
-            <img src="../assets/bgimage.jpg"></img>
+            <img src={bgImage} className="w-full h-full object-cover"></img>
           </div>
         </div>
       </section>
