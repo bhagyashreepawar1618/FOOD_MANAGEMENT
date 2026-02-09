@@ -1,0 +1,17 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server for foodmanagement fullstack application",
+  "license": "ISC",
+  "author": "Bhagyashree Pawar",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon './src/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.4",
+    "nodemon": "^3.1.11",
+    "prettier": "^3.8.1"
+  }
+}
