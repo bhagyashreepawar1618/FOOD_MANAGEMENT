@@ -2,6 +2,7 @@ import asyncHandler from "../utils/asyncHandler.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import ApiError from "../utils/ApiErrors.js";
 import { Admin } from "../models/admin.model.js";
+import { Menu } from "../models/menu.model.js";
 
 const generateAccessAndRefreshTokens = async (adminId) => {
   try {
@@ -98,4 +99,38 @@ export const loginAdmin = asyncHandler(async (req, res) => {
       "Admin Logged In successfully"
     )
   );
+});
+
+export const setMenuData = asyncHandler(async (req, res) => {
+  //take data from user
+  const { date, sabjiOptions, sweetOptions } = req.body;
+
+  if (!date || !sabjiOptions || !sweetOptions) {
+    throw new ApiError(400, "All fields are required");
+  }
+
+  //check if menu is alredy created
+  const existedMenu = await Menu.findOne({ date });
+
+  if (existedMenu) {
+    existedMenu.sabjiOptions = sabjiOptions;
+    existedMenu.sweetOptions = sweetOptions;
+
+    await existedMenu.save();
+
+    return res
+      .status(200)
+      .json(new ApiResponse(200, existedMenu, "Menu updated successfully"));
+  }
+
+  //if menu is not present of that date then create new menu
+  const newmenu = await Menu.create({
+    date,
+    sabjiOptions,
+    sweetOptions,
+  });
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, newmenu, "Menu is saved successfully"));
 });
