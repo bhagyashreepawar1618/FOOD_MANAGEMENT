@@ -5,15 +5,6 @@ import bcrypt from "bcryptjs";
 //user Schema
 const adminSchema = new Schema(
   {
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-      lowercase: true,
-      trim: true,
-      index: true,
-    },
-
     email: {
       type: String,
       required: true,
@@ -27,11 +18,6 @@ const adminSchema = new Schema(
       required: true,
       trim: true,
       index: true,
-    },
-
-    avtar: {
-      type: String, //cloudinary url
-      default: "",
     },
 
     password: {
@@ -65,7 +51,6 @@ userSchema.methods.generateAccessToken = function () {
     {
       _id: this._id,
       email: this.email,
-      username: this.username,
       fullname: this.fullname,
     },
     process.env.ACCESS_TOKEN_SECRET,
@@ -80,7 +65,6 @@ userSchema.methods.generateRefreshToken = function () {
     {
       _id: this._id,
       email: this.email,
-      username: this.username,
       fullname: this.fullname,
     },
     process.env.REFRESH_TOKEN_SECRET,
