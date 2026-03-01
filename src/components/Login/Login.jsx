@@ -2,8 +2,10 @@ import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useStudent } from "../../contexts/studentContext";
 
 function Login() {
+  const { setStudentToken, setStudent } = useStudent();
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -15,6 +17,7 @@ function Login() {
     e.preventDefault();
     setLoading(true);
 
+    console.log("hii from login");
     //backend call
     try {
       const response = await axios.post(
@@ -25,15 +28,20 @@ function Login() {
         },
       );
 
+      console.log("student info=", response.data.data.loggedInStudent);
       localStorage.setItem("accessToken", response.data.data.accessToken);
-
+      setStudentToken(response.data.data.accessToken);
+      setStudent(response.data.data.loggedInStudent);
       setLoading(false);
       setUsername("");
       setPassword("");
       alert("Student is Logged in successfully");
       navigate("/dashboard", { replace: true });
       console.log("response from Backend=", response);
-    } catch (e) {}
+    } catch (e) {
+      console.log("Error while looging in the user", e);
+      setLoading(false);
+    }
   }
 
   return (
