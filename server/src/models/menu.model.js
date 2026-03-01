@@ -12,7 +12,7 @@ const menuSchema = new Schema(
       required: true,
     },
     sweetOptions: {
-      type: [string],
+      type: [String],
       required: true,
     },
   },
