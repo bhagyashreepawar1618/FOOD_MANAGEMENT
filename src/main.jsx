@@ -25,10 +25,6 @@ const route = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "staff",
-        element: <Staff />,
-      },
-      {
         path: "dashboard",
         element: <Menu />,
       },

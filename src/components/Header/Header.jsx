@@ -52,19 +52,6 @@ function Header() {
           </NavLink>
 
           <NavLink
-            to="/staff"
-            className={({ isActive }) =>
-              `transition ${
-                isActive
-                  ? "text-[#AB274F] border-b-2 border-[#AB274F]"
-                  : "hover:text-[#AB274F]"
-              }`
-            }
-          >
-            Staff Login
-          </NavLink>
-
-          <NavLink
             to="/dashboard"
             className={({ isActive }) =>
               `transition ${
