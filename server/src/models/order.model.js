@@ -10,7 +10,6 @@ const orderSchema = new Schema(
     menu: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Menu",
-      required: true,
     },
     selectedSabji: {
       type: String,
@@ -18,6 +17,10 @@ const orderSchema = new Schema(
     },
     selectedSweet: {
       type: String,
+      required: true,
+    },
+    rotis: {
+      type: Number,
       required: true,
     },
   },
