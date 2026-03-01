@@ -24,7 +24,6 @@ function Header() {
           >
             Home
           </NavLink>
-
           <NavLink
             to="/register"
             className={({ isActive }) =>
@@ -37,7 +36,6 @@ function Header() {
           >
             Register
           </NavLink>
-
           <NavLink
             to="/login"
             className={({ isActive }) =>
@@ -50,7 +48,6 @@ function Header() {
           >
             Login
           </NavLink>
-
           <NavLink
             to="/dashboard"
             className={({ isActive }) =>
@@ -63,6 +60,19 @@ function Header() {
           >
             Dashboard
           </NavLink>
+          <NavLink
+            to="/profile"
+            className={({ isActive }) =>
+              `transition ${
+                isActive
+                  ? "text-[#AB274F] border-b-2 border-[#AB274F]"
+                  : "hover:text-[#AB274F]"
+              }`
+            }
+          >
+            Profile
+          </NavLink>
+          v
         </nav>
       </div>
     </header>
