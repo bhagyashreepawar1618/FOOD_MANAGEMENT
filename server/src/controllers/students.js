@@ -6,10 +6,10 @@ import uploadOnCloudinary from "../utils/cloudinary.js";
 
 const generateAccessAndRefreshTokens = async (userId) => {
   try {
-    const student = Student.findById(userId);
+    const student = await Student.findById(userId);
 
-    const accessToken = userId.generateAccessToken();
-    const refreshToken = userId.generateRefreshToken();
+    const accessToken = student.generateAccessToken();
+    const refreshToken = student.generateRefreshToken();
 
     student.accessToken = accessToken;
     student.refreshToken = refreshToken;
@@ -84,15 +84,14 @@ export const loginStudent = asyncHandler(async (req, res) => {
   //if registered then check if password is correct or not
   //if password is correct generate access and refresh tokens
   //send response
-  const { username, email, password } = req.body;
+  const { username, password } = req.body;
 
-  if (!username || !email) {
-    throw new ApiError(404, "username or eamil is required");
+  if (!username) {
+    throw new ApiError(404, "username  is required");
   }
-  const student = Student.findOne({
-    $or: [{ username }, { email }],
-  }).select("-password");
+  const student = await Student.findOne({ username });
 
+  console.log("student=", student);
   if (!student) {
     throw new ApiError(400, "Student is not Registered");
   }
@@ -106,19 +105,21 @@ export const loginStudent = asyncHandler(async (req, res) => {
   }
 
   //if password is correct generate access and refresh Tokens
-  const { accessToken, refreshToken } = generateAccessAndRefreshTokens(
+  const { accessToken, refreshToken } = await generateAccessAndRefreshTokens(
     student._id
   );
 
-  console.log("access token is= ", accessToken);
-
-  const loggedInStudent = Student.findById(student._id).select(
+  const loggedInStudent = await Student.findById(student._id).select(
     "-password -refreshToken"
   );
 
   return res
     .status(200)
     .json(
-      new ApiResponse(200, loggedInStudent, "student logged in successFully")
+      new ApiResponse(
+        200,
+        { loggedInStudent, accessToken, refreshToken },
+        "student logged in successFully"
+      )
     );
 });
