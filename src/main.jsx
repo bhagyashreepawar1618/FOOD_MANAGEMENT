@@ -5,12 +5,16 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout/Layout.jsx";
 import Home from "./components/home/Home.jsx";
 import Login from "./components/Login/Login.jsx";
-import Staff from "./components/messStaff/StaffLogin.jsx";
 import Menu from "./components/menuDashboard/Menu.jsx";
-import Register from "./components/register/Register.jsx";
 
 import "./index.css";
-
+import StaffLogin from "./components/Login/StaffLogin.jsx";
+import StudentRegister from "./components/register/StudentRegister.jsx";
+import StaffRegister from "./components/register/StaffRegister.jsx";
+import LoginLayout from "./components/Login/loginLayout.jsx";
+import RegisterLayout from "./components/register/RegisterLayout.jsx";
+import { StudentProvider } from "./contexts/studentContext.jsx";
+import StudentProfile from "./components/student/StudentProfile.jsx";
 const route = createBrowserRouter([
   {
     path: "/",
@@ -22,7 +26,26 @@ const route = createBrowserRouter([
       },
       {
         path: "login",
-        element: <Login />,
+        children: [
+          {
+            path: "",
+            element: <LoginLayout />,
+            children: [
+              {
+                path: "",
+                element: <Login />,
+              },
+              {
+                path: "staff",
+                element: <StaffLogin />,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        path: "profile",
+        element: <StudentProfile />,
       },
       {
         path: "dashboard",
@@ -30,7 +53,22 @@ const route = createBrowserRouter([
       },
       {
         path: "register",
-        element: <Register />,
+        children: [
+          {
+            path: "",
+            element: <RegisterLayout />,
+            children: [
+              {
+                path: "",
+                element: <StudentRegister />,
+              },
+              {
+                path: "staff",
+                element: <StaffRegister />,
+              },
+            ],
+          },
+        ],
       },
     ],
   },
@@ -38,6 +76,8 @@ const route = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={route}></RouterProvider>
+    <StudentProvider>
+      <RouterProvider router={route}></RouterProvider>
+    </StudentProvider>
   </StrictMode>,
 );
