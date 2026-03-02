@@ -7,6 +7,7 @@ export const verifyJWT = asyncHandler(async (req, _, next) => {
   //access token from cookies
   //we've set cookies at the time of login
   try {
+    console.log("hii from auth");
     const token = req.header("Authorization")?.replace("Bearer ", "");
 
     //if token is not there throw an error
