@@ -1,9 +1,12 @@
 import axios from "axios";
-import { use, useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 import { useStudent } from "../../contexts/studentContext";
 // import axios from "axios";  // tum baad me use kar lena
 
 function StudentDashboard() {
+  const navigate = useNavigate();
+  const { setOrderSummary } = useStudent();
   const { studentToken } = useStudent();
   const [date, setDate] = useState("");
   const [menu, setmenu] = useState();
@@ -70,6 +73,8 @@ function StudentDashboard() {
       );
 
       console.log("res=", res.data.data);
+      setOrderSummary(res.data.data);
+      navigate("/ordersummary", { replace: true });
     } catch (e) {
       alert(e);
     }
