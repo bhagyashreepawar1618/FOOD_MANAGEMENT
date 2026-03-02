@@ -2,14 +2,15 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useStudent } from "../../contexts/studentContext";
+import { useStaff } from "../../contexts/StaffContext";
 // import axios from "axios";  // tum baad me use kar lena
 
 function StudentDashboard() {
   const navigate = useNavigate();
+  const { menu, setMenu } = useStaff();
   const { setOrderSummary } = useStudent();
   const { studentToken } = useStudent();
   const [date, setDate] = useState("");
-  const [menu, setmenu] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -33,15 +34,9 @@ function StudentDashboard() {
         {
           date,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${studentToken}`,
-          },
-        },
       );
 
-      console.log("res=", response.data);
-      setmenu(response.data.data);
+      setMenu(response.data.data);
       setLoading(false);
     } catch (err) {
       setError("Menu not available for this date");
@@ -71,8 +66,6 @@ function StudentDashboard() {
           },
         },
       );
-
-      console.log("res=", res.data.data);
       setOrderSummary(res.data.data);
       navigate("/ordersummary", { replace: true });
     } catch (e) {
