@@ -27,4 +27,6 @@ const orderSchema = new Schema(
   { timestamps: true }
 );
 
+orderSchema.index({ student: 1, date: 1 }, { unique: true });
+
 export const Order = mongoose.model("Order", orderSchema);
