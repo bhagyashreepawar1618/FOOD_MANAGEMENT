@@ -17,14 +17,13 @@ function StaffLogin() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/admin/login",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/login`,
         {
           email,
           password,
         },
       );
 
-      console.log("res from backend=", response.data.data);
       localStorage.setItem("adminToken", response.data.data.accessToken);
       setStaff(response.data.data.loggedInAdmin);
       setStaffToken(response.data.data.accessToken);

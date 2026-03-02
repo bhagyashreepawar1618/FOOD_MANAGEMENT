@@ -30,7 +30,7 @@ function StudentDashboard() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/students/getmenu",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/students/getmenu`,
         {
           date,
         },
@@ -54,7 +54,7 @@ function StudentDashboard() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/v1/students/set-student-menu",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/students/set-student-menu`,
         {
           selectedSabji,
           selectedSweet,

@@ -17,18 +17,16 @@ function Login() {
     e.preventDefault();
     setLoading(true);
 
-    console.log("hii from login");
     //backend call
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/students/login",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/students/login`,
         {
           username,
           password,
         },
       );
 
-      console.log("student info=", response.data.data.loggedInStudent);
       localStorage.setItem("accessToken", response.data.data.accessToken);
       setStudentToken(response.data.data.accessToken);
       setStudent(response.data.data.loggedInStudent);

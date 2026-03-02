@@ -19,7 +19,7 @@ function StaffOrdersDashboard() {
       setError("");
 
       const res = await axios.post(
-        "http://localhost:5000/api/v1/students/getmenu",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/students/getmenu`,
         { date },
       );
 
@@ -39,7 +39,7 @@ function StaffOrdersDashboard() {
   // Fetch Orders Table
   const fetchOrders = async (menuId) => {
     const res = await axios.get(
-      `http://localhost:5000/api/v1/admin/all-orders`,
+      `${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/all-orders`,
       {
         headers: {
           Authorization: `Bearer ${staffToken}`,
@@ -53,7 +53,7 @@ function StaffOrdersDashboard() {
   // ✅ 3️⃣ Fetch Stats
   const fetchStats = async (menuId) => {
     const res = await axios.get(
-      `http://localhost:5000/api/v1/admin/get-menu-stats/${menuId}`,
+      `${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/get-menu-stats/${menuId}`,
       {
         headers: {
           Authorization: `Bearer ${staffToken}`,

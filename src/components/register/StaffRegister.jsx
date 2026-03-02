@@ -16,7 +16,7 @@ function StaffRegister() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/admin/register",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/register`,
         {
           fullname,
           email,

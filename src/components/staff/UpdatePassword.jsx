@@ -37,7 +37,7 @@ function AdminUpdatePassword() {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:5000/api/v1/admin/update-password",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/update-password`,
         {
           oldPassword,
           newPassword,
@@ -50,7 +50,6 @@ function AdminUpdatePassword() {
       );
 
       setMessage("Password updated successfully ✅");
-      console.log("res=", res);
       setOldPassword("");
       setNewPassword("");
       setConfirmPassword("");

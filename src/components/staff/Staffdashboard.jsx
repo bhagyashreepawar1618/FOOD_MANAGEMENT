@@ -25,7 +25,7 @@ function StaffDashboard() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/v1/admin/setmenu",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/setmenu`,
         {
           date: new Date().toLocaleDateString("en-CA"),
           sabjiOptions: sabji,
@@ -33,7 +33,6 @@ function StaffDashboard() {
         },
       );
 
-      console.log("res from backend isss =", res.data.data);
       alert("Menu Saved Successfully ✅");
       setDate("");
       setSabji(["", "", ""]);

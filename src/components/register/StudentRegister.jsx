@@ -25,11 +25,10 @@ function StudentRegister() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/students/register",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/students/register`,
         StudentFormData,
       );
 
-      console.log("response from backend is= ", response);
       setLoading(false);
       alert("Student registered successfully");
       navigate("/login", { replace: true });
