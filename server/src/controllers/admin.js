@@ -3,6 +3,7 @@ import ApiResponse from "../utils/ApiResponse.js";
 import ApiError from "../utils/ApiErrors.js";
 import { Admin } from "../models/admin.model.js";
 import { Menu } from "../models/menu.model.js";
+import { Order } from "../models/order.model.js";
 
 const generateAccessAndRefreshTokens = async (adminId) => {
   try {
@@ -185,4 +186,31 @@ export const updatePassword = asyncHandler(async (req, res) => {
   return res
     .status(200)
     .json(new ApiResponse(200, {}, "Password updated successfully"));
+});
+
+export const getAllOrders = asyncHandler(async (req, res) => {
+  const { menuId } = req.query; // optional filter by menu/date
+
+  let filter = {};
+
+  if (menuId) {
+    filter.menu = menuId;
+  }
+
+  const orders = await Order.find(filter)
+    .populate("student", "fullname email username")
+    .populate("menu", "date");
+
+  const totalOrders = orders.length;
+
+  return res.status(200).json(
+    new ApiResponse(
+      200,
+      {
+        totalOrders,
+        orders,
+      },
+      "All orders fetched successfully"
+    )
+  );
 });
