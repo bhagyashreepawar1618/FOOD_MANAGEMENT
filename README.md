@@ -18,7 +18,7 @@ Order Summary of students
 ---
 Student Dashboard For Meal Selection
 ---
-<img width="1890" height="867" alt="image" src="https://github.com/user-attachments/assets/5645bffa-34c6-415e-80bf-035ffbe0cb17" />
+<img width="900" height="600" alt="image" src="https://github.com/user-attachments/assets/5645bffa-34c6-415e-80bf-035ffbe0cb17" />
 
 ---
 Login Page For Admin
@@ -33,7 +33,7 @@ Other Options Availabe in Admin Profile
 ---
 Total Data Admin Dashboard
 ---
-<img width="1898" height="866" alt="image" src="https://github.com/user-attachments/assets/95f80a35-88ce-45bb-bbc1-51cb75a86c6a" />
+<img width="900" height="600" alt="image" src="https://github.com/user-attachments/assets/95f80a35-88ce-45bb-bbc1-51cb75a86c6a" />
 
 ---
 
