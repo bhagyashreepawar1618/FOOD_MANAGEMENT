@@ -134,3 +134,33 @@ export const setMenuData = asyncHandler(async (req, res) => {
     .status(200)
     .json(new ApiResponse(200, newmenu, "Menu is saved successfully"));
 });
+
+export const updateAdminProfile = asyncHandler(async (req, res) => {
+  //take updated data from admin
+  const { email, fullname } = req.body;
+
+  //validation
+  if (!email || !fullname) {
+    throw new ApiError(409, "all feilds are required");
+  }
+
+  //store or overwrite them in database
+  const updatedAdmin = await Admin.findByIdAndUpdate(
+    req.admin._id,
+    {
+      $set: {
+        fullname,
+        email,
+      },
+    },
+    {
+      new: true,
+    }
+  );
+
+  return res
+    .status(200)
+    .json(
+      new ApiResponse(200, updatedAdmin, "Admin details updated successfully")
+    );
+});
