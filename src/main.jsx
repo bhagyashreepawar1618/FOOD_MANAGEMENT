@@ -19,6 +19,8 @@ import { StaffProvider } from "./contexts/StaffContext.jsx";
 import StaffProfile from "./components/Staff/StaffProfile.jsx";
 import StaffDashboard from "./components/staff/Staffdashboard.jsx";
 import OrderSummary from "./components/student/OrderSummary.jsx";
+import AdminUpdatePassword from "./components/staff/UpdatePassword.jsx";
+import AdminUpdateProfile from "./components/staff/UpdateProfile.jsx";
 const route = createBrowserRouter([
   {
     path: "/",
@@ -87,6 +89,14 @@ const route = createBrowserRouter([
         ],
       },
     ],
+  },
+  {
+    path: "change-staff-password",
+    element: <AdminUpdatePassword />,
+  },
+  {
+    path: "staff-update-profile",
+    element: <AdminUpdateProfile />,
   },
 ]);
 
