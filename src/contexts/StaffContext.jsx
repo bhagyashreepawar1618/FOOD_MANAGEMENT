@@ -6,7 +6,7 @@ export const StaffProvider = ({ children }) => {
   const [staff, setStaff] = useState(null);
   const [staffToken, setStaffToken] = useState(null);
   const [totalData, setTotalData] = useState();
-
+  const [menu, setMenu] = useState();
   const value = {
     staff,
     setStaff,
@@ -14,6 +14,8 @@ export const StaffProvider = ({ children }) => {
     setStaffToken,
     totalData,
     setTotalData,
+    menu,
+    setMenu,
   };
 
   return (
