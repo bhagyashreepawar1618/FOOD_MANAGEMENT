@@ -18,6 +18,7 @@ import StudentProfile from "./components/student/StudentProfile.jsx";
 import { StaffProvider } from "./contexts/StaffContext.jsx";
 import StaffProfile from "./components/Staff/StaffProfile.jsx";
 import StaffDashboard from "./components/staff/Staffdashboard.jsx";
+import OrderSummary from "./components/student/OrderSummary.jsx";
 const route = createBrowserRouter([
   {
     path: "/",
@@ -49,6 +50,10 @@ const route = createBrowserRouter([
       {
         path: "profile",
         element: <StudentProfile />,
+      },
+      {
+        path: "/ordersummary",
+        element: <OrderSummary />,
       },
       {
         path: "staffprofile",
