@@ -27,6 +27,7 @@ function StaffLogin() {
       console.log("res from backend=", response.data.data);
       localStorage.setItem("adminToken", response.data.data.accessToken);
       setStaff(response.data.data.loggedInAdmin);
+      setStaffToken(response.data.data.accessToken);
       alert("Admin Logged in Successfully ✅");
       navigate("/staffprofile", { replace: true });
     } catch (error) {
