@@ -13,6 +13,8 @@ export const StudentProvider = ({ children }) => {
     setStudent,
     studentToken,
     setStudentToken,
+    setOrderSummary,
+    orderSummary,
   };
   return (
     <StudentContext.Provider value={value}>{children}</StudentContext.Provider>
