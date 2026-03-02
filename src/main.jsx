@@ -11,7 +11,7 @@ import "./index.css";
 import StaffLogin from "./components/Login/StaffLogin.jsx";
 import StudentRegister from "./components/register/StudentRegister.jsx";
 import StaffRegister from "./components/register/StaffRegister.jsx";
-import LoginLayout from "./components/Login/loginLayout.jsx";
+import LoginLayout from "./components/Login/LoginLayout.jsx";
 import RegisterLayout from "./components/register/RegisterLayout.jsx";
 import { StudentProvider } from "./contexts/studentContext.jsx";
 import StudentProfile from "./components/student/StudentProfile.jsx";
