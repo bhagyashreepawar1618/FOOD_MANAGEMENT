@@ -19,6 +19,6 @@ router.route("/register").post(
   registerStudent
 );
 router.route("/login").post(loginStudent);
-router.route("/getmenu").post(verifyJWT, getTodaysMenu);
+router.route("/getmenu").post(getTodaysMenu);
 router.route("/set-student-menu").post(verifyJWT, setStudentMenu);
 export default router;
