@@ -27,7 +27,7 @@ function StaffDashboard() {
       const res = await axios.post(
         "http://localhost:5000/api/v1/admin/setmenu",
         {
-          date,
+          date: new Date().toLocaleDateString("en-CA"),
           sabjiOptions: sabji,
           sweetOptions: sweet,
         },
